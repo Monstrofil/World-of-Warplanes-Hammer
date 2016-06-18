@@ -1,12 +1,8 @@
 package WorldofWarplanesHammer
 {
-	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.net.URLRequest;
-	import flash.system.LoaderContext;
-	import lesta.utils.Promise;
-    import flash.system.ApplicationDomain;
+	import WorldofWarplanesCommon.ML_SWFLoader;
 	
 	/**
 	 * ...
@@ -25,17 +21,8 @@ package WorldofWarplanesHammer
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			Promise.load("modsList.xml").then(function(arg1:String) {
-				var modsList:XML = new XML(arg1);
-				for each(var i:XML in modsList.mods.mod) {
-					if (i.@path == "placeholder")
-						continue;
-					
-					var tempLoader:Loader = new Loader();
-					tempLoader.load(new URLRequest(i.@path), new LoaderContext(false, ApplicationDomain.currentDomain)); 
-					addChild(tempLoader);
-				}
-			});
+			var loader:ML_SWFLoader = new ML_SWFLoader();
+			loader.load("modsList.xml", this);
 		}
 		private var __global:__Global;
 	}
