@@ -1,5 +1,6 @@
 package WorldofWarplanesCommon 
 {
+	import com.junkbyte.console.Cc;
 	import flash.display.DisplayObject;
 	import flash.display.Loader;
 	import flash.display.Sprite;
@@ -19,15 +20,15 @@ package WorldofWarplanesCommon
 			
 		}
 		
-		public function load(filename:String, parent:Sprite) {
-			Promise.load(filename).then(function(arg1:String) {
+		public function load(filename:String, parent:Sprite) :void {
+			Cc.log(filename);
+			Promise.load(filename).then(function(arg1:String):void {
 				var modsList:XML = new XML(arg1);
 				for each(var i:XML in modsList.mods.mod) {
-					if (i.@path == "placeholder")
+					if (i.path == "placeholder")
 						continue;
-					
 					var tempLoader:Loader = new Loader();
-					tempLoader.load(new URLRequest(i.@path), new LoaderContext(false, ApplicationDomain.currentDomain)); 
+					tempLoader.load(new URLRequest(i.path), new LoaderContext(false, ApplicationDomain.currentDomain)); 
 					parent.addChild(tempLoader);
 				}
 			});
