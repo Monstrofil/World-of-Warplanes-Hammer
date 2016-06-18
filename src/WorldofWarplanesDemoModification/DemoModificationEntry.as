@@ -1,7 +1,12 @@
 package WorldofWarplanesDemoModification
 {
+	import com.junkbyte.console.Cc;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import lesta.controls.ButtonsSwitcher;
+	import lesta.controls.JellyScrollbar;
+	import lesta.controls.Slider;
+	import lesta.controls.TextAreaNoEnter;
 	import lesta.display.Sector;
 	
 	/**
@@ -25,10 +30,11 @@ package WorldofWarplanesDemoModification
 			lestaTest.color = 0xEEEEEE;
 			lestaTest.radius = 100;
 			lestaTest.width = 100;
-			lestaTest.height = 100;
-			
+			lestaTest.height = 100;			
 			
 			this.addChild(lestaTest);
+			
+			Cc.log("I am Alive!11");
 		}
 		
 	}

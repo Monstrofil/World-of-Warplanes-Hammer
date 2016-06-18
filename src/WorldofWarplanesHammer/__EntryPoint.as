@@ -1,7 +1,9 @@
 package WorldofWarplanesHammer
 {
+	import com.junkbyte.console.Cc;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.text.TextField;
 	import WorldofWarplanesCommon.ML_SWFLoader;
 	
 	/**

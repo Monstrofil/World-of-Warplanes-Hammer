@@ -82,7 +82,7 @@
   <!-- Executed before build -->
   <preBuildCommand>"D:\workspace\python27\python.exe" "$(ProjectDir)/prebuild.py" "$(ProjectDir)/src/"</preBuildCommand>
   <!-- Executed after build -->
-  <postBuildCommand alwaysRun="False">cmd /c if $(BuildConfig)==release "D:\Games\World_of_Warplanes\WorldOfWarplanes.exe" "D:\Games\World_of_Warplanes\WoWPTEST.wowpreplay"</postBuildCommand>
+  <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
