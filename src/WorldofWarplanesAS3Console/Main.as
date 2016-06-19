@@ -10,7 +10,6 @@ package WorldofWarplanesAS3Console
 	 */
 	public class Main extends Sprite 
 	{
-		
 		public function Main() 
 		{
 			if (stage) init();

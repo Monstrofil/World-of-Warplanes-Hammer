@@ -23,6 +23,7 @@ package WorldofWarplanesCommon
 	import lesta.utils.*;
 	import scaleform.clik.managers.*;
 	import scaleform.gfx.*;
+	import wowp.hud.HUD;
 	
 	public final class ML_UnboundApplication extends Overlay
 	{
@@ -62,9 +63,9 @@ package WorldofWarplanesCommon
 		
 		private function onReady(arg1:String):void
 		{
-			Cc.log(arg1);
+			Cc.log("HUD._model");
+			Cc.log(HUD._model);
 			xml = new XML(arg1.replace(LINE_TO_REMOVE, ""));
-			Cc.log(xml);
 			this.makeBlocks(xml);
 		}
 		
