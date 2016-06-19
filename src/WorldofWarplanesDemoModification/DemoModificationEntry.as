@@ -8,6 +8,7 @@ package WorldofWarplanesDemoModification
 	import lesta.controls.Slider;
 	import lesta.controls.TextAreaNoEnter;
 	import lesta.display.Sector;
+	import WorldofWarplanesCommon.ML_UnboundApplication;
 	
 	/**
 	 * ...
@@ -25,16 +26,9 @@ package WorldofWarplanesDemoModification
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			var lestaTest:Sector = new Sector();
-			lestaTest.arc = 200;
-			lestaTest.color = 0xEEEEEE;
-			lestaTest.radius = 100;
-			lestaTest.width = 100;
-			lestaTest.height = 100;			
 			
-			this.addChild(lestaTest);
-			
-			Cc.log("I am Alive!11");
+			var unboundApp:ML_UnboundApplication = new ML_UnboundApplication("ML_Unbound.xml", this.stage, "RootBlock");
+			this.addChild(unboundApp);
 		}
 		
 	}
