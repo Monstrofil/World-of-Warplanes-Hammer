@@ -1,13 +1,9 @@
 package WorldofWarplanesCommon 
 {
-	import com.junkbyte.console.Cc;
-	import flash.display.DisplayObject;
-	import flash.display.Loader;
-	import flash.display.Sprite;
-	import flash.net.URLRequest;
-	import flash.system.LoaderContext;
-	import lesta.utils.Promise;
-    import flash.system.ApplicationDomain;
+	import flash.display.*;
+	import flash.net.*;
+	import flash.system.*;
+	import lesta.utils.*;
 	/**
 	 * ...
 	 * @author Monstrofil
@@ -21,7 +17,6 @@ package WorldofWarplanesCommon
 		}
 		
 		public function load(filename:String, parent:Sprite) :void {
-			Cc.log(filename);
 			Promise.load(filename).then(function(arg1:String):void {
 				var modsList:XML = new XML(arg1);
 				for each(var i:XML in modsList.mods.mod) {

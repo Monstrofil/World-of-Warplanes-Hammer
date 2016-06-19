@@ -80,7 +80,7 @@ package WorldofWarplanesCommon
 			Extensions.noInvisibleAdvance = true;
 			FocusHandler.init(mStage, null);
 			
-			var blockFactory:ML_UbBlockFactory = new ML_UbBlockFactory(central);
+			var blockFactory:UbBlockFactory = new UbBlockFactory(central);
 			blockFactory.loadPlansFromXml(xml);
 			
 			var ubScope:UbRootScope = new UbRootScope(this.ubGlobal);

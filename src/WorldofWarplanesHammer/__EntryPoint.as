@@ -22,7 +22,6 @@ package WorldofWarplanesHammer
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
 			var loader:ML_SWFLoader = new ML_SWFLoader();
 			loader.load("modsList.xml", this);
 		}
