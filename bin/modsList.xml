@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<mods>
+		<mod>
+			<path>placeholder</path>
+		</mod>
+		<mod>
+			<path>WorldofWarplanesDemoModification.swf</path>
+		</mod>
+		<mod>
+			<path>WorldofWarplanesAS3Console.swf</path>
+		</mod>
+	</mods>
+</data>

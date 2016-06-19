@@ -203,8 +203,8 @@ package wowp.hud
       {
          if(stage)
          {
-            _model.control.stageHeight = int(int(int(int(int(int(int(int(int(int(stage.stageHeight))))))))));
-            _model.control.stageWidth = int(int(int(int(int(int(int(int(int(int(stage.stageWidth))))))))));
+            _model.control.stageHeight = int(stage.stageHeight);
+            _model.control.stageWidth = int(stage.stageWidth);
          }
       }
    }

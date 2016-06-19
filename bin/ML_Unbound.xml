@@ -1,0 +1,59 @@
+DONT'T REMOVE THIS LINE!!!
+<ui>
+	<css name="$DefaultText">
+		<fontFamily value="$ZurichCond"/>
+		<selectable value="false"/>
+		<fontSize value="16"/>
+		<textColor value="0xEEEEEE"/>
+		<fontFamily value="$ZurichCond"/>
+		<dropShadowFilter value="1 90 0x08222a 0.5 2.0 2.0 1.0 2"/>
+	</css>
+	
+	<block className="ROW">
+		<block type="text">
+			<styleClass value="$DefaultText"/>
+			<bind name="text" value="health"/>
+		</block>
+		<block type="text">
+			<styleClass value="$DefaultText"/>
+			<bind name="text" value="playerName"/>
+		</block>
+		<style>
+			<flow value="horizontal"/>
+		</style>
+	</block>
+	
+	<block className="RootBlock">
+		<block>
+			<bind name="controller" value="UbPlayersController"/>
+			<style>
+				<left value="200"/>
+				<top value="400"/>
+			</style>
+			
+			<bind name="repeat" value="allies; 'ROW'; {}"/>
+		</block>
+		<block>
+			<bind name="controller" value="UbPlayersController"/>
+			<style>
+				<left value="400"/>
+				<top value="400"/>
+			</style>
+			
+			<bind name="repeat" value="enemies; 'ROW'; {}"/>
+		</block>
+		
+		<block>			
+			<block type="text">
+				<style>
+					<textAlign value="right"/>
+					<left value="200"/>
+					<top value="10"/>
+				</style>
+				<styleClass value="$DefaultText"/>
+				<bind name="clock" value="'timeText'; 'hh:mm:ss'"/>
+				<bind name="pureText" value="'' + timeText"/>
+			</block>
+		</block>
+	</block>
+</ui>
