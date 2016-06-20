@@ -3,27 +3,322 @@ DONT'T REMOVE THIS LINE!!!
 	<css name="$DefaultText">
 		<fontFamily value="$ZurichCond"/>
 		<selectable value="false"/>
-		<fontSize value="16"/>
 		<textColor value="0xEEEEEE"/>
-		<fontFamily value="$ZurichCond"/>
 		<dropShadowFilter value="1 90 0x08222a 0.5 2.0 2.0 1.0 2"/>
 	</css>
 	
+	<css name="$DefaultTextBold">
+		<fontFamily value="$ZurichCondBold"/>
+		<selectable value="false"/>
+		<textColor value="0xEEEEEE"/>
+		<dropShadowFilter value="1 90 0x08222a 0.5 2.0 2.0 1.0 2"/>
+	</css>
+	
+	<css name="$MiddleAligned">
+		<marginLeft value="-50%"/>
+		<left value="50%"/>
+	</css>
+	<css name="$MiddleAlignedAbsolutely">
+		<position value="absolute"/>
+		<marginLeft value="-50%"/>
+		<left value="50%"/>
+	</css>
+	<css name="$MiddleVAligned">
+		<top value="50%"/>
+		<marginTop value="-50%"/>
+	</css>
+	<css name="$EyeLevelVAligned">
+		<top value="44%"/>
+		<marginTop value="-50%"/>
+	</css>
+	<css name="$MiddleVAlignedAbsolutely">
+		<position value="absolute"/>
+		<top value="50%"/>
+		<marginTop value="-50%"/>
+	</css>
+	<css name="$MiddleVHAbsolutely">
+		<position value="absolute"/>
+		<top value="50%"/>
+		<marginLeft value="-50%"/>
+		<marginTop value="-50%"/>
+		<left value="50%"/>
+	</css>
+	<css name="$AlignRight">
+		<position value="absolute"/>
+		<right value="0"/>
+	</css>
+	
+	<css name="$Fullsize">
+		<width value="100%"/>
+		<height value="100%"/>
+	</css>
+	<css name="$FullsizeAbsolute">
+		<width value="100%"/>
+		<position value="absolute"/>
+		<height value="100%"/>
+	</css>
+	
+	<css name="$FontSizeThumbelina">
+		<fontSize value="7"/>
+	</css>
+	<css name="$FontSizeNano">
+		<fontSize value="11"/>
+	</css>
+	<css name="$FontSizeSmall">
+		<fontSize value="13"/>
+	</css>
+	<css name="$FontSizeDefault">
+		<fontSize value="15"/>
+	</css>
+	<css name="$FontSizeLarge">
+		<fontSize value="17"/>
+	</css>
+	<css name="$FontSizeHeader6">
+		<fontSize value="19"/>
+	</css>
+	<css name="$FontSizeHeader5">
+		<fontSize value="21"/>
+	</css>
+	<css name="$FontSizeHeader4">
+		<fontSize value="23"/>
+	</css>
+	<css name="$FontSizeHeader3">
+		<fontSize value="25"/>
+	</css>
+	<css name="$FontSizeHeader2">
+		<fontSize value="30"/>
+	</css>
+	<css name="$FontSizeHeader1">
+		<fontSize value="36"/>
+	</css>
+	<css name="$FontAccentSize2">
+		<fontSize value="50"/>
+	</css>
+	<css name="$FontAccentSize1">
+		<fontSize value="60"/>
+	</css>
+	
 	<block className="ROW">
-		<block type="text">
-			<styleClass value="$DefaultText"/>
-			<bind name="text" value="health"/>
-		</block>
-		<block type="text">
-			<styleClass value="$DefaultText"/>
-			<bind name="text" value="playerName"/>
-		</block>
+		<bind name="controller" value="UbRomanController"/>
+		<bind name="style" value="'backgroundColor'; $index % 2 == 0 ? '0x15000000' : '0x25000000'"/>
 		<style>
-			<flow value="horizontal"/>
+			<width value="100%"/>
+			<height value="28px"/>
 		</style>
+		<block>
+			<style>
+				<marginLeft value="18px"/>
+				<flow value="horizontal"/>
+				<marginTop value="2px"/>
+			</style>
+			
+			<block type="text">
+				<styleClass value="$DefaultText"/>
+				<bind name="text" value="playerName"/>
+				<style>
+					<textAlign value="left"/>
+					<width value="120px"/>
+				</style>
+			</block>
+			
+			<block type="text">
+				<styleClass value="$DefaultText"/>
+				<bind name="text" value="roman[planeLevel]"/>
+				
+				<style>
+					<textAlign value="left"/>
+					<width value="30px"/>
+				</style>
+			</block>
+			
+			<block type="text">
+				<styleClass value="$DefaultText"/>
+				<bind name="text" value="planeName"/>
+				
+				<style>
+					<textAlign value="left"/>
+					<width value="100px"/>
+				</style>
+			</block>
+			
+			<block>
+				<style>
+					<height value="100px"/>
+					<width value="100px"/>
+				</style>
+				<bind name="style" value="'backgroundImage'; 'url:' + planeTypeIconPath"/>
+			</block>
+			
+		</block>
+		
 	</block>
 	
 	<block className="RootBlock">
+		<styleClass value="$FullsizeAbsolute"/>
+		<block>
+			<styleClass value="$Fullsize"/>
+			<bind name="controller" value="UbScreenController"/>
+			<bind name="child" value="screenIndex; {}; 'Loading'; 'Battle'"/>
+		</block>
+	</block>
+	
+	<block className="Loading">
+		<bind name="controller" value="UbLoadingController"/>
+		<bind name="controller" value="UbMapController"/>
+		
+		<block className="MapBG">
+			<style>
+				<position value="absolute"/>
+			</style>
+			<bind name="style" value="'backgroundImage'; 'url:' + arenaIcoPath"/>
+			
+			<block type="text">
+				<style>
+					<width value="300"/>
+					<height value="100"/>
+					<textAlign value="center"/>
+					<position value="absolute"/>
+					<marginLeft value="-50%"/>
+				</style>
+				<bind name="left" value="stageSize.x / 2"/>
+				<bind name="top" value="stageSize.y - 100"/>
+				<bind name="text" value="toUpperCase(arenaName)"/>
+				<styleClass value="$DefaultTextBold"/>
+				<styleClass value="$FontSizeHeader1"/>
+			</block>
+			
+			<block>
+				<block className="comStatusIndicator" type="native">
+					<style>
+						<marginTop value="12px"/>
+					</style>
+					<bind name="value" value="progressBarValue / 10"/>
+				</block>
+
+				<style>
+					<marginLeft value="-50%"/>
+					<position value="absolute"/>
+				</style>
+				<bind name="visible" value="progressBarValue != 100"/>
+				<bind name="left" value="stageSize.x / 2"/>
+				<bind name="top" value="stageSize.y - 70"/>
+			</block>
+			
+			<!--<block className="comBtnEnter" type="native">
+				<style>
+					<marginTop value="12px"/>
+				</style>
+			</block>-->
+			
+			<block className="UIlistTeam">
+				<style>
+					<marginLeft value="-50%"/>
+					<marginTop value="-50%"/>
+					<flow value="horizontal"/>
+					<top value="30sh"/>
+				</style>
+				<bind name="left" value="stageSize.x / 2"/>
+				
+				<block className="UIlistTeamStructureLeft">
+					<bind name="controller" value="UbPlayersController"/>
+					<style>
+						<width value="420px"/>
+					</style>
+					<block>
+						<style>
+							<width value="420px"/>
+							<backgroundColor value="0x2200b300"/>
+						</style>
+						<block>
+							<style>
+								<width value="100%"/>
+							</style>
+							<block type="text">
+								<style>
+									<marginLeft value="18px"/>
+									<width value="100%"/>
+									<marginTop value="2px"/>
+								</style>
+								<styleClass value="$DefaultTextBold"/>
+								<bind name="text" value="tr('TEAMS_STRUCTURE_US')"/>
+							</block>
+						</block>
+						<block>
+							
+						</block>
+						<style>
+							<flow value="horizontal"/>
+						</style>
+					</block>
+					
+					<bind name="repeat" value="allies; 'ROW'; {}"/>
+				</block>
+				
+				<block className="UIlistTeamStructureRight">
+					<bind name="controller" value="UbPlayersController"/>
+					<style>
+						<width value="420px"/>
+					</style>
+					
+					<block>
+						
+						<style>
+							<width value="420px"/>
+							<backgroundColor value="0x22b30000"/>
+						</style>
+						<block>
+							<style>
+								<width value="100%"/>
+							</style>
+							<block type="text">
+								<style>
+									<marginLeft value="18px"/>
+									<width value="100%"/>
+									<marginTop value="2px"/>
+								</style>
+								<styleClass value="$DefaultTextBold"/>
+								<bind name="text" value="tr('TEAMS_STRUCTURE_ENEMY')"/>
+							</block>
+						</block>
+						<block>
+							
+						</block>
+						<style>
+							<flow value="horizontal"/>
+						</style>
+					</block>
+					
+					<bind name="repeat" value="enemies; 'ROW'; {}"/>
+				</block>
+			</block>
+		</block>		
+		
+		
+		
+		<block type="text">
+			<style>
+				<textAlign value="right"/>
+				<left value="200"/>
+				<top value="10"/>
+			</style>
+			<styleClass value="$DefaultText"/>
+			<bind name="text" value="'Loading' + arenaIcoPath + $parent.blockWidth"/>
+		</block>
+		
+		
+	</block>
+	
+	<block className="Battle">
+		<block type="text">
+			<style>
+				<textAlign value="right"/>
+				<left value="200"/>
+				<top value="10"/>
+			</style>
+			<styleClass value="$DefaultText"/>
+			<bind name="text" value="'Battle'"/>
+		</block>
+		
 		<block>
 			<bind name="controller" value="UbPlayersController"/>
 			<style>
@@ -41,19 +336,6 @@ DONT'T REMOVE THIS LINE!!!
 			</style>
 			
 			<bind name="repeat" value="enemies; 'ROW'; {}"/>
-		</block>
-		
-		<block>			
-			<block type="text">
-				<style>
-					<textAlign value="right"/>
-					<left value="200"/>
-					<top value="10"/>
-				</style>
-				<styleClass value="$DefaultText"/>
-				<bind name="clock" value="'timeText'; 'hh:mm:ss'"/>
-				<bind name="pureText" value="'' + timeText"/>
-			</block>
 		</block>
 	</block>
 </ui>

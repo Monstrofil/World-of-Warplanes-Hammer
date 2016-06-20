@@ -5,10 +5,10 @@
 			<path>placeholder</path>
 		</mod>
 		<mod>
-			<path>WorldofWarplanesDemoModification.swf</path>
+			<path>WorldofWarplanesAS3Console.swf</path>
 		</mod>
 		<mod>
-			<path>WorldofWarplanesAS3Console.swf</path>
+			<path>WorldofWarplanesDemoModification.swf</path>
 		</mod>
 	</mods>
 </data>
