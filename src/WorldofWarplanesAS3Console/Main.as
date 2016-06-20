@@ -22,6 +22,8 @@ package WorldofWarplanesAS3Console
 			Cc.start(this);
 			Cc.x = this.stage.stageWidth / 2 - Cc.width / 2;
 			Cc.y = this.stage.stageHeight / 2 - Cc.height / 2;
+			Cc.config.commandLineAllowed = true;
+			Cc.config.commandLineAutoCompleteEnabled = true;
 		}
 		
 	}

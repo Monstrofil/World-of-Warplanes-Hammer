@@ -28,6 +28,7 @@ package
 			
 			scope.allies = [];
 			scope.enemies = [];
+			
 		}
 		
 		private function validatePlayerList():void {
@@ -49,7 +50,6 @@ package
 					}
 				}
 			}
-			
 			HUD._model.players.applySortStrategy(_leftPlayers);
 			HUD._model.players.applySortStrategy(_rightPlayers);
 			

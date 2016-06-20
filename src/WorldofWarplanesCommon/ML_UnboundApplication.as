@@ -23,6 +23,7 @@ package WorldofWarplanesCommon
 	import lesta.utils.*;
 	import scaleform.clik.managers.*;
 	import scaleform.gfx.*;
+	import wowp.core.LocalizationManager;
 	import wowp.hud.HUD;
 	
 	public final class ML_UnboundApplication extends Overlay
@@ -66,6 +67,13 @@ package WorldofWarplanesCommon
 			Cc.log("HUD._model");
 			Cc.log(HUD._model);
 			xml = new XML(arg1.replace(LINE_TO_REMOVE, ""));
+			
+			LocalizationManager.getInstance().addEventListener(LocalizationManager.LANGUAGE_CHANGED, this.onLocalizationReloaded);
+			LocalizationManager.getInstance().reloadLocalization();
+
+		}
+		
+		private function onLocalizationReloaded(...rest) {
 			this.makeBlocks(xml);
 		}
 		
@@ -149,7 +157,7 @@ package WorldofWarplanesCommon
 			this.central = new UbCentral(mStage, injector, this.ubGlobal);
 			central.setGlobalDefinition("tr", function(arg1:String):String
 			{
-				return arg1 ? Translator.translate(arg1) : "";
+				return arg1 ? LocalizationManager.getInstance().textByLocalizationID(arg1) : "";
 			})
 			central.setGlobalDefinition("subst", lesta.utils.StringUtils.asprintf);
 			central.setGlobalDefinition("toUpperCase", function(arg1:String):String
@@ -191,6 +199,7 @@ package WorldofWarplanesCommon
 			central.setGlobalDefinition("dataHub", datahub)
 			this.mSizeStage.x = this.mStage.stageWidth;
 			this.mSizeStage.y = this.mStage.stageHeight;
+			Cc.log(mSizeStage);
 			central.setGlobalDefinition("stageSize", mSizeStage);
 			central.setGlobalDefinition("CC", lesta.constants.ComponentClass);
 			central.setGlobalDefinition("VoteTypes", lesta.constants.VoteConstants);
